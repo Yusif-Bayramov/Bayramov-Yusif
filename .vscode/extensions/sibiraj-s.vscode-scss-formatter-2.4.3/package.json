@@ -1,0 +1,138 @@
+{
+	"name": "vscode-scss-formatter",
+	"displayName": "SCSS Formatter",
+	"description": "%scssFormatter.description%",
+	"version": "2.4.3",
+	"author": "sibiraj-s",
+	"licence": "MIT",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sibiraj-s/vscode-scss-formatter.git"
+	},
+	"bugs": "https://github.com/sibiraj-s/vscode-scss-formatter/issues",
+	"homepage": "https://marketplace.visualstudio.com/items?itemName=sibiraj-s.vscode-scss-formatter",
+	"engines": {
+		"node": ">=16.0.0",
+		"vscode": "^1.68.0"
+	},
+	"scripts": {
+		"deploy": "vsce publish",
+		"vscode:prepublish": "npm run package",
+		"compile": "webpack",
+		"watch": "webpack --watch",
+		"package": "webpack --mode production --devtool hidden-source-map",
+		"compile-tests": "tsc -p . --outDir out",
+		"watch-tests": "tsc -p . -w --outDir out",
+		"compile-tests-web": "tsc -p tsconfig-test-web.json --outDir dist/web",
+		"watch-tests-web": "tsc -p tsconfig-test-web.json -w --outDir dist/web",
+		"test-web": "node ./dist/web/test/runTest-web.js",
+		"test": "node ./out/test/runTest.js",
+		"run-in-browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. test-workspace",
+		"lint": "eslint . --ext js,ts --ignore-path .gitignore",
+		"prepare": "is-ci || husky install"
+	},
+	"dependencies": {
+		"prettier": "^2.6.2"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^17.0.2",
+		"@commitlint/config-conventional": "^17.0.2",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "^16.11.39",
+		"@types/prettier": "^2.6.3",
+		"@types/vscode": "^1.68.0",
+		"@types/webpack-env": "^1.17.0",
+		"@vscode/test-electron": "^2.1.4",
+		"@vscode/test-web": "^0.0.24",
+		"assert": "^2.0.0",
+		"eslint": "^8.17.0",
+		"eslint-config-pegasus": "^3.3.0",
+		"fast-glob": "^3.2.11",
+		"husky": "^8.0.1",
+		"is-ci": "^3.0.1",
+		"lint-staged": "^13.0.1",
+		"mocha": "^10.0.0",
+		"picocolors": "^1.0.0",
+		"process": "^0.11.10",
+		"ts-loader": "^9.3.0",
+		"typescript": "^4.7.3",
+		"vsce": "^2.9.1",
+		"webpack": "^5.73.0",
+		"webpack-cli": "^4.9.2"
+	},
+	"publisher": "sibiraj-s",
+	"icon": "assets/sass.png",
+	"categories": [
+		"Formatters"
+	],
+	"activationEvents": [
+		"onCommand:scssFormatter.showOutput",
+		"onCommand:scssFormatter.clearOutput",
+		"onLanguage:css",
+		"onLanguage:scss"
+	],
+	"main": "./dist/extension.js",
+	"browser": "./dist/web/extension.js",
+	"capabilities": {
+		"virtualWorkspaces": true,
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
+	"contributes": {
+		"commands": [
+			{
+				"command": "scssFormatter.showOutput",
+				"title": "%scssFormatter.commands.showOutput.title%",
+				"category": "SCSS Formatter"
+			},
+			{
+				"command": "scssFormatter.clearOutput",
+				"title": "%scssFormatter.commands.clearOutput.title%",
+				"category": "SCSS Formatter"
+			}
+		],
+		"configuration": [
+			{
+				"type": "object",
+				"title": "SCSS Formatter",
+				"properties": {
+					"scssFormatter.printWidth": {
+						"type": "number",
+						"default": 120,
+						"description": "%scssFormatter.config.printWidth.description%"
+					},
+					"scssFormatter.singleQuote": {
+						"type": "boolean",
+						"default": false,
+						"description": "%scssFormatter.config.singleQuote.description%"
+					},
+					"scssFormatter.trailingComma": {
+						"type": "string",
+						"default": "es5",
+						"enum": [
+							"es5",
+							"none",
+							"all"
+						],
+						"description": "%scssFormatter.config.singleQuote.description%"
+					}
+				}
+			}
+		]
+	},
+	"sponsor": {
+		"url": "https://github.com/sponsors/sibiraj-s"
+	},
+	"__metadata": {
+		"id": "01708053-6fab-403f-9787-9d5f3d8f7d6a",
+		"publisherId": "370e6924-7ae5-4a40-8bb0-af2f6fec7ebf",
+		"publisherDisplayName": "Sibiraj",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1655749510700
+	}
+}

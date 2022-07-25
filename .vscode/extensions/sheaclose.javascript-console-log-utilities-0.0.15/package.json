@@ -1,0 +1,107 @@
+{
+	"name": "javascript-console-log-utilities",
+	"displayName": "javascript-console-log-utilities",
+	"description": "An extension on the lovely extension created by whtouche [https://github.com/whtouche/vscode-js-console-utils]",
+	"version": "0.0.15",
+	"publisher": "sheaclose",
+	"repository": "https://github.com/SheaClose/javascript-console-log-utilities",
+	"engines": {
+		"vscode": "^1.34.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.insertLogStatement",
+		"onCommand:extension.insertInfoStatement",
+		"onCommand:extension.insertWarnStatement",
+		"onCommand:extension.insertErrorStatement",
+		"onCommand:extension.deleteAllLogStatements"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.insertLogStatement",
+				"title": "Insert Log Statement"
+			},
+			{
+				"command": "extension.insertInfoStatement",
+				"title": "Insert Info Statement"
+			},
+			{
+				"command": "extension.insertWarnStatement",
+				"title": "Insert Warn Statement"
+			},
+			{
+				"command": "extension.insertErrorStatement",
+				"title": "Insert Error Statement"
+			},
+			{
+				"command": "extension.deleteAllLogStatements",
+				"title": "Delete all console.log statements"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.insertLogStatement",
+				"key": "shift+Win+l",
+				"mac": "shift+cmd+l",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "extension.insertInfoStatement",
+				"key": "shift+Win+alt+l",
+				"mac": "shift+cmd+alt+l",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "extension.insertWarnStatement",
+				"key": "ctrl+shift+Win+l",
+				"mac": "ctrl+shift+cmd+l",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "extension.insertErrorStatement",
+				"key": "ctrl+alt+Win+l",
+				"mac": "ctrl+alt+cmd+l",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "extension.deleteAllLogStatements",
+				"key": "shift+Win+d",
+				"mac": "shift+cmd+d",
+				"when": "editorTextFocus"
+			}
+		]
+	},
+	"scripts": {
+		"compile": "tsc -p ./",
+		"lint": "tslint -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"publish": "./publish.sh",
+		"vscode:prepublish": "npm run compile",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^10.14.17",
+		"@types/vscode": "^1.34.0",
+		"tslint": "^5.16.0",
+		"typescript": "^3.5.1",
+		"vscode": "^1.1.36"
+	},
+	"__metadata": {
+		"id": "4f11499d-d884-4e58-a8a7-0b68e320d6bb",
+		"publisherDisplayName": "sheaclose",
+		"publisherId": "7f6f8173-f585-43e5-94ec-62831177dac3",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1656548733263
+	},
+	"dependencies": {
+		"@types/lodash": "^4.14.149",
+		"lodash": "^4.17.15"
+	}
+}
